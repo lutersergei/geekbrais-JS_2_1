@@ -9,10 +9,8 @@ function CounterField(selector) {
     {
         if (((event.keyCode<48)||(event.keyCode>57)) && (event.keyCode !== 8) && ((event.keyCode<96)||(event.keyCode>105)))
         {
-            // console.log(event.keyCode);
             event.preventDefault();
         }
-        // console.log(this.value);
     };
     input.setAttribute('type', 'text');
     var buttonPlus  = document.createElement('button');
@@ -34,10 +32,8 @@ function CounterField(selector) {
         input.value = checkValue(input.value);
     }
     function checkValue(value) {
-        // console.log(self.minValue , self.maxValue);
         if ((self.minValue === undefined) && (self.maxValue === undefined))
         {
-            // console.log('undefined');
             return value;
         }
         //Проверка на правильность введеный минимум и максимум значений
@@ -47,12 +43,10 @@ function CounterField(selector) {
         }
         if (self.minValue !== undefined)
         {
-            // console.log('min');
             if (value < self.minValue) value = self.minValue;
         }
         if (self.maxValue !== undefined)
         {
-            // console.log('max');
             if (value > self.maxValue) value = self.maxValue;
         }
         return value;
