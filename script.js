@@ -1,10 +1,19 @@
-function CounterField(selector) {
+function CounterField(selector, options) {
     var container = document.querySelector(selector);
     var input = document.createElement('input');
-    this.incrementStep = 1;
-    this.decrementStep = 1;
-    this.minValue = undefined;
-    this.maxValue = undefined;
+    if (options === undefined) options = {};
+    this.incrementStep = options.incrementStep;
+    if (this.incrementStep === undefined)
+    {
+        this.incrementStep = 1;
+    }
+    this.decrementStep = options.decrementStep;
+    if (this.decrementStep === undefined)
+    {
+        this.decrementStep = 1;
+    }
+    this.minValue = options.minValue;
+    this.maxValue = options.maxValue;
     input.onkeydown = function (event)
     {
         if (((event.keyCode<48)||(event.keyCode>57)) && (event.keyCode !== 8) && ((event.keyCode<96)||(event.keyCode>105)))
@@ -55,8 +64,4 @@ function CounterField(selector) {
 
 var counterfield_1 = new CounterField('#counterfield_1');
 
-var counterfield_2 = new CounterField('#counterfield_2');
-counterfield_2.incrementStep = 10;
-counterfield_2.decrementStep = 10;
-counterfield_2.minValue = 0;
-counterfield_2.maxValue = 60;
+var counterfield_2 = new CounterField('#counterfield_2', {incrementStep: 10, decrementStep: 10, minValue: 0, maxValue: 60});
